@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+const program = require('commander')
+
+const { resolve } = require('path')
+
+const result = command => resolve(__dirname, '../lib/commands/', command)
+ // 定义当前版本
+program
+    .version(require('../package').version )
+    
+// 定义使用方法
+program
+    .usage('<command>')
+
+
+program
+    .command('create')
+    .description('Add a new template for 58-FE')
+    .alias('c')
+    .action(() => {
+      require(result('create'))
+    })
+
+
+
+program.parse(process.argv)
+
+if(!program.args.length){
+  program.help()
+}
