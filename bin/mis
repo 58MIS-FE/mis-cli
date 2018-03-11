@@ -5,27 +5,26 @@ const program = require('commander')
 const { resolve } = require('path')
 
 const result = command => resolve(__dirname, '../lib/commands/', command)
- // 定义当前版本
+    // 定义当前版本
 program
-    .version(require('../package').version )
-    
+    .version(require('../package').version)
+
 // 定义使用方法
 program
     .usage('<command>')
 
 
 program
-    .command('create')
+    .command('init')
     .description('Add a new template for 58-FE')
-    .alias('c')
-    .action(() => {
-      require(result('create'))
+    .action((...args) => {
+        require(result('create'))(args);
     })
 
 
 
 program.parse(process.argv)
 
-if(!program.args.length){
-  program.help()
+if (!program.args.length) {
+    program.help()
 }
