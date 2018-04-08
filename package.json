@@ -14,7 +14,9 @@
     },
     "author": "MIS-FE",
     "license": "ISC",
-    "devDependencies": {},
+    "devDependencies": {
+        "mis-vue-ast": "0.0.6"
+    },
     "dependencies": {
         "bluebird": "^3.5.1",
         "co": "^4.6.0",

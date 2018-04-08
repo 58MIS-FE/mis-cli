@@ -1,29 +1,39 @@
 #!/usr/bin/env node
 
-const program = require('commander');
+/**
+ * 载入命令行辅助模块(commander)
+ * 载入path模块
+ * 
+ */
 
+const program = require('commander');
 const { resolve } = require('path');
 
-const result = command => resolve(__dirname, '../lib/commands/', command);
-// 定义当前版本
-program
-    .version(require('../package').version);
+/**
+ * entrance 入口action跳转
+ * @param command 
+ */
+const entrance = command => resolve(__dirname, '../lib/commands/', command);
 
-// 定义使用方法
-program
-    .usage('<command>');
+program.version(require('../package').version);
+program.usage('<command>');
 
 
 program
     .command('init')
-    .description('使用MIS-CLI创建一个新项目')
+    .description('使用MIS-CLI初始化一个新项目')
     .option('-f, --force', '如果目标目录存在，强制覆盖')
     .option('-c, --clone', '在获取远程预置时使用Git克隆')
     .action((...args) => {
-        require(result('create'))(args);
+        require(entrance('create'))(args);
     });
 
-
+program
+    .command('page')
+    .description('使用MIS-CLI创建一个新页面')
+    .action((...args) => {
+        require(entrance('page'))(args, process.cwd());
+    });
 
 program.parse(process.argv);
 
