@@ -32,7 +32,7 @@ program
     .command('page')
     .description('使用MIS-CLI创建一个新页面')
     .action((...args) => {
-        require(entrance('page'))(args);
+        require(entrance('page'))(args, process.cwd());
     });
 
 program.parse(process.argv);
