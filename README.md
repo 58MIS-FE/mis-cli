@@ -32,5 +32,3 @@
   ? Use request library for your app? 
   ? client port 5858
 ```
-
-webpack4待升级,less&sass选择,eslint规范化模板
