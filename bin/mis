@@ -25,7 +25,7 @@ program
     .option('-f, --force', '如果目标目录存在，强制覆盖')
     .option('-c, --clone', '在获取远程预置时使用Git克隆')
     .action((...args) => {
-        require(entrance('create'))(args);
+        require(entrance('create'))(args, process.cwd());
     });
 
 program
